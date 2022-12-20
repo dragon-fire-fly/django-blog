@@ -31,7 +31,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["i-think-therefore-i-blog-ek.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = [
+    "i-think-therefore-i-blog-ek.herokuapp.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "django.contrib.staticfiles",
     "cloudinary",
+    "django_summernote",
     "blog",
 ]
 
@@ -128,9 +133,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_STORAGE = (
-    "cloudinary_storage.storage.StaticfHashedCloudinaryStorage"
-)
+# STATICFILES_STORAGE = (
+#     "cloudinary_storage.storage.StaticfHashedCloudinaryStorage"
+# )
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
