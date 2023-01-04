@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Post, User
 from .forms import CommentForm
 
@@ -20,6 +21,9 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        
+        messages.success(request, "Your comment was successfully added.")
+        messages.error(request, "Your comment could not be added. Please try again.")
 
         return render(
             request,
